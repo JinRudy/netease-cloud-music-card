@@ -21,7 +21,7 @@ jobs:
         run: node index.js
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USER_ID: 429596204
+          USER_ID: 32953014
           USER_TOKEN: ${{ secrets.USER_TOKEN }}
           REPO: "netease-cloud-music-card"
           AUTHOR: "WuShui"
