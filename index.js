@@ -32,7 +32,7 @@ const {
         cookie: `MUSIC_U=${USER_TOKEN}`,
         uid: USER_ID,
         type: 0,
-    }).catch(error => console.error(`无法获取用户播放记录 \n${error}`));
+    }).catch(error => console.error(`无法获取用户播放记录 \nJSON.stringify(error)`));
     
     const content = record.body;
     console.log(JSON.stringify(content));
