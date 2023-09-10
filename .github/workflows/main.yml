@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule: 
-    - cron: "39 21 * * *" # 半天更新一次
+    - cron: "45 21 * * *" # 半天更新一次
     
 permissions:
   contents: write
