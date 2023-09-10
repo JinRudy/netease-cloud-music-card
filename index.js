@@ -33,8 +33,9 @@ const {
         uid: USER_ID,
         type: 0,
     }).catch(error => console.error(`无法获取用户播放记录 \n${error}`));
-
+    
     const content = record.body;
+    console.log(JSON.stringify(content));
     console.log(JSON.stringify(content.weekData));
     const songId = content.weekData[0].song.id + '';
     const songLink = "https://music.163.com/#/song?id=" + songId
