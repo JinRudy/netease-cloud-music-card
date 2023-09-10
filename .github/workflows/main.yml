@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule: 
-    - cron: "0 12 * * *" # 半天更新一次
+    - cron: "39 21 * * *" # 半天更新一次
     
 permissions:
   contents: write
@@ -24,4 +24,4 @@ jobs:
           USER_ID: 429596204
           USER_TOKEN: ${{ secrets.USER_TOKEN }}
           REPO: "netease-cloud-music-card"
-          AUTHOR: "WhiteScent"
+          AUTHOR: "WuShui"
