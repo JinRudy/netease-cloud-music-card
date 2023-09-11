@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { Octokit } = require('@octokit/rest');
-const { user_record, song_detail, user_account } = require('NeteaseCloudMusicApi');
+const { user_record, song_detail, user_account, user_subcount, user_playlist } = require('NeteaseCloudMusicApi');
 const axios = require('axios').default;
 
 async function getBase64(url) {
@@ -22,15 +22,16 @@ const {
     })
     const username = account.body.profile.nickname;
     const avatarUrl = account.body.profile.avatarUrl + "?param=128y128"; // 压缩
-    console.log(`用户名：${username}\n \n个人头像: ${avatarUrl}`);
+    console.log(`用户名：${username}\n \n个人头像: ${avatarUrl}\n JSON.stringify(${account})`);
 
     /*
       获取歌单记录
     */
    
     const record = await user_record({
+        cookie: `MUSIC_U=${USER_TOKEN}`,
         uid: USER_ID,
-        type: 1,
+        type: 1
     }).catch(error => console.error(`无法获取用户播放记录 \n${JSON.stringify(error)}`));
     
     const content = record.body;
