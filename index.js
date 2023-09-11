@@ -29,7 +29,7 @@ const {
     })
     const username = account.body.profile.nickname;
     const avatarUrl = account.body.profile.avatarUrl + "?param=128y128"; // 压缩
-    console.log(`用户名：${username}\n \n个人头像: ${avatarUrl}\n JSON.stringify(${account})`);
+    console.log(`用户名：${username}\n \n个人头像: ${avatarUrl}\n`);
 
     /*
       获取歌单记录
@@ -39,7 +39,7 @@ const {
         cookie: `MUSIC_U=${USER_TOKEN}`,
         uid: USER_ID,
         type: 1
-    }).catch(error => console.error(`无法获取用户播放记录 \n${JSON.stringify(error)}`));
+    }).catch(error => console.error(`无法获取用户播放记录 \n ${JSON.stringify(error)}`));
     
     const content = record.body;
     const songId = content.weekData[0].song.id + '';
@@ -230,9 +230,8 @@ const {
      `
         ;     
         // console.log(`svgLink : ${svgLink}`)
-        svgContent = Buffer.from(
-            svgLink
-, 'base64');
+        svgContent = Buffer.from(svgLink, 'base64');
+        // svgContent = btoa(btoa(unescape(encodeURIComponent(svgLink))));
     } catch(err) {
         console.error(`处理 SVG 时发生了错误：${err}`);
     }
@@ -250,6 +249,7 @@ const {
             content: svgContent,
             encoding: "base64"
         });
+        console.log(data)
 
         const commits = await octokit.repos.listCommits({
             owner: AUTHOR,
